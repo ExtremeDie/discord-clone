@@ -49,7 +49,7 @@ model Server {
 
 model Member {
   id String @id @default(uuid())
-  role  String @default("GUEST") // ADMIN, MODERATOR, GUEST
+  role String @default("GUEST") // ADMIN, MODERATOR, GUEST
 
   profileId String
   profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
