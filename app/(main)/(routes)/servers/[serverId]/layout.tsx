@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation';
 import ServerSidebar from '../../../../../components/server/server-sidebar';
 
 const ServerIdLayout = async ({ children, params }: { children: React.ReactNode; params: { serverId: string } }) => {
+	const { serverId } = await params;
 	const profile = await currentProfile();
 
 	if (!profile) {
@@ -15,7 +16,7 @@ const ServerIdLayout = async ({ children, params }: { children: React.ReactNode;
 
 	const server = await db.server.findUnique({
 		where: {
-			id: params.serverId,
+			id: serverId,
 			members: {
 				some: {
 					profileId: profile.id,
@@ -31,7 +32,7 @@ const ServerIdLayout = async ({ children, params }: { children: React.ReactNode;
 	return (
 		<div className="h-full">
 			<div className="fixed inset-y-0 z-20 flex-col h-full md:flex w-60">
-				<ServerSidebar serverId={params.serverId} />
+				<ServerSidebar serverId={serverId} />
 			</div>
 			<main className="h-full md:pl-60">{children}</main>
 		</div>
