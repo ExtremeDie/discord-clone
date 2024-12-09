@@ -2,9 +2,9 @@ import currentProfile from '@/lib/current-profile';
 import { NextResponse } from 'next/server';
 import { v4 as uuidv4 } from 'uuid';
 import { db } from '../../../lib/db';
-import { MemberRole } from '../../../lib/types';
+import { MemberRole } from '../../../types';
 
-const POST = async (req: Request) => {
+export const POST = async (req: Request) => {
 	try {
 		const { name, imageUrl } = await req.json();
 		const profile = await currentProfile();
@@ -44,5 +44,3 @@ const POST = async (req: Request) => {
 		return new NextResponse('Internal Error', { status: 500 });
 	}
 };
-
-export default POST;
