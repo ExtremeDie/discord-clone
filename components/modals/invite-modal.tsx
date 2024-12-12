@@ -52,17 +52,17 @@ export const InviteModal = () => {
 				</DialogHeader>
 				<div className="p-6">
 					<Label className="text-xs font-bold uppercase text-zinc-500 dark:text-secondary/70">Server invite link</Label>
-				</div>
-				<div className="flex items-center mt-2 gap-x-2">
-					<Input disabled={isLoading} className="text-black border-0 bg-zinc-300/50 focus-visible:ring-0 focus-visible:ring-offset-0" value={inviteUrl} />
-					<Button disabled={isLoading} onClick={onCopy} size="icon">
-						{copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+					<div className="flex items-center mt-2 gap-x-2">
+						<Input disabled={isLoading} className="text-black border-0 bg-zinc-300/50 focus-visible:ring-0 focus-visible:ring-offset-0" value={inviteUrl} />
+						<Button disabled={isLoading} onClick={onCopy} size="icon">
+							{copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+						</Button>
+					</div>
+					<Button onClick={onNew} disabled={isLoading} variant="link" size="sm" className="mt-4 text-xs text-zinc-500">
+						Generate a new link
+						<RefreshCw className="w-4 h-4 ml-2" />
 					</Button>
 				</div>
-				<Button onClick={onNew} disabled={isLoading} variant="link" size="sm" className="mt-4 text-xs text-zinc-500">
-					Generate a new link
-					<RefreshCw className="w-4 h-4 ml-2" />
-				</Button>
 			</DialogContent>
 		</Dialog>
 	);
